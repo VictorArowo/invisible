@@ -20,7 +20,7 @@ Compiles typescript to javascript, parses command line arguments, and runs the p
 Example:
 
 ```sh
-npm start "London", "London", "New York"
+npm start "Lagos", "London", "New York"
 ```
 
 ## Run tests
