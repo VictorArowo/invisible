@@ -3,18 +3,21 @@ import {
   getCoordinates,
   getTemperatureAndTime,
   TemperatureAndTime,
+  standardizeInput,
 } from "./helpers";
 
-const main = () => {
+export const main = () => {
   try {
-    const places: string[] = JSON.parse(process.argv[2]);
+    const [, , ...args] = process.argv;
+    const places: string[] = standardizeInput([...args]);
     console.log("Processing...");
 
     places.map((place) => {
+      const encodedPlace = encodeURI(place);
       flow(
         getCoordinates,
         getTemperatureAndTime
-      )(place).then((res: TemperatureAndTime) =>
+      )(encodedPlace).then((res: TemperatureAndTime) =>
         console.log(
           `${place} has a temparature of ${res.temp}°c and the current time is ${res.time}`
         )

@@ -6,8 +6,9 @@ import {
   getTimeFromTimezoneOffset,
   convertKelvinToCelsiusTemperature,
 } from "./helpers";
-import coordinatesResponse from "./__mocks__/coordinatesResponse";
-import temperatureAndTimeResponse from "./__mocks__/temperatureAndTimeResponse";
+import { main } from "./index";
+import coordinatesResponse from "./mockResponses/coordinatesResponse";
+import temperatureAndTimeResponse from "./mockResponses/temperatureAndTimeResponse";
 
 jest.mock("axios");
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -21,6 +22,7 @@ beforeAll(() => {
 afterAll(() => {
   spy.mockReset();
 });
+
 test("getTimeFromTimezoneOffset works as expected", async () => {
   expect(getTimeFromTimezoneOffset(3600)).toEqual("10:46:14 AM");
 });
@@ -39,17 +41,6 @@ test("convertKelvinToCelsiusTemperature works as expected", async () => {
 });
 
 test("getTemperatureAndTime works as expected", async () => {
-  mockedAxios.get.mockImplementationOnce(() =>
-    Promise.resolve({ data: temperatureAndTimeResponse })
-  );
-  const response = await getTemperatureAndTime({
-    lat: 51.507276,
-    lon: -0.12766,
-  });
-  expect(response).toEqual({ temp: "15", time: "10:46:14 AM" });
-});
-
-test("integration", async () => {
   mockedAxios.get.mockImplementationOnce(() =>
     Promise.resolve({ data: temperatureAndTimeResponse })
   );
