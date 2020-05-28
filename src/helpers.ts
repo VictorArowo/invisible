@@ -10,3 +10,9 @@ export const getTimeFromTimezoneOffset = (offset: number) => {
   const adjustedTime = utcTime + offset * 1000;
   return new Date(adjustedTime).toLocaleTimeString("en-US");
 };
+
+export const convertKelvinToCelsiusTemperature = (temperature: number) => {
+  const celsuis = temperature - 273;
+  const celsuisFixed = celsuis.toFixed(0);
+  return celsuisFixed;
+};
