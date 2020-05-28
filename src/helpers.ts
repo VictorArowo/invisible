@@ -58,7 +58,7 @@ export const getTemperatureAndTime = async (
 };
 
 export const standardizeInput = (arr: string[]): string[] => {
-  const arrString = arr.reduce((acc, curr) => (acc += `${curr} `), "");
-  const seperatedArray = arrString.split(", " || ",");
+  const arrString = arr.reduce((acc, curr) => (acc += ` ${curr}`));
+  const seperatedArray = arrString.split(", ").map((elem) => elem.trim());
   return seperatedArray;
 };

@@ -19,7 +19,9 @@ export const main = () => {
         getTemperatureAndTime
       )(encodedPlace).then((res: TemperatureAndTime) =>
         console.log(
-          `${place} has a temparature of ${res.temp}°c and the current time is ${res.time}`
+          `${place.trim()} has a temparature of ${
+            res.temp
+          }°c and the current time is ${res.time}`
         )
       );
     });

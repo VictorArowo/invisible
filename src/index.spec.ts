@@ -5,6 +5,7 @@ import {
   getTemperatureAndTime,
   getTimeFromTimezoneOffset,
   convertKelvinToCelsiusTemperature,
+  standardizeInput,
 } from "./helpers";
 import { main } from "./index";
 import coordinatesResponse from "./mockResponses/coordinatesResponse";
@@ -49,4 +50,13 @@ test("getTemperatureAndTime works as expected", async () => {
     lon: -0.12766,
   });
   expect(response).toEqual({ temp: "15", time: "10:46:14 AM" });
+});
+
+test("convertKelvinToCelsiusTemperature works as expected", async () => {
+  expect(convertKelvinToCelsiusTemperature(273)).toEqual("0");
+});
+
+test("standardizeInput works as expected", async () => {
+  const response = standardizeInput(["one, ", "two, ", "new york"]);
+  expect(response).toEqual(["one", "two", "new york"]);
 });
