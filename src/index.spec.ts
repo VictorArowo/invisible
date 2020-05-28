@@ -7,7 +7,7 @@ import {
   convertKelvinToCelsiusTemperature,
   standardizeInput,
 } from "./helpers";
-import { main } from "./index";
+
 import coordinatesResponse from "./mockResponses/coordinatesResponse";
 import temperatureAndTimeResponse from "./mockResponses/temperatureAndTimeResponse";
 
