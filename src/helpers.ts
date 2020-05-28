@@ -34,3 +34,25 @@ export const getCoordinates = async (
     console.log(error);
   }
 };
+
+export interface TemperatureAndTime {
+  temp: string;
+  time: string;
+}
+export const getTemperatureAndTime = async (
+  coordinates: Coordinates
+): Promise<void | TemperatureAndTime> => {
+  const { lat, lon } = coordinates;
+
+  try {
+    const { data } = await axios.get(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=defc605098f799005cd8477ff485bfb8`
+    );
+    return {
+      temp: convertKelvinToCelsiusTemperature(data.main.temp),
+      time: getTimeFromTimezoneOffset(data.timezone),
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
