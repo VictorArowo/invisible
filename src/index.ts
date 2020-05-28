@@ -10,6 +10,7 @@ export const main = () => {
   try {
     const [, , ...args] = process.argv;
     const places: string[] = standardizeInput([...args]);
+
     console.log("Processing...");
 
     places.map((place) => {
@@ -26,7 +27,7 @@ export const main = () => {
       );
     });
   } catch (error) {
-    console.log("Something went wrong. Usage => npm start '[PLACES]'");
+    console.log("Something went wrong. Usage => npm start PLACES");
   }
 };
 

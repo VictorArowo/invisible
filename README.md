@@ -12,7 +12,7 @@ npm install
 ## Usage
 
 ```sh
-npm start '[ARRAY_WITH_PLACES]'
+npm start PLACES
 ```
 
 Compiles typescript to javascript, parses command line arguments, and runs the program.
@@ -20,7 +20,7 @@ Compiles typescript to javascript, parses command line arguments, and runs the p
 Example:
 
 ```sh
-npm start '["London", "Lagos"]'
+npm start "London", "London", "New York"
 ```
 
 ## Run tests
